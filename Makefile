@@ -1,25 +1,17 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g
 
-OBJ_DIR = objects
-BIN_DIR = bin
-SRC_FILES = main.o swap.o 
-OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRC_FILES))
+TARGET = main
+SRC = main.c regles.c baseC.c baseF.c moteurInference.c
+OBJ = $(SRC:.c=.o)
 
+all: $(TARGET)
 
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
 
-
-main: $(OBJ_FILES) | $(BIN_DIR)
-	gcc -o $(BIN_DIR)/$@ $^
-
-
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	gcc -c -o $@ $<
-
-
-$(OBJ_DIR) $(BIN_DIR):
-	mkdir -p $@
-
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(BIN_DIR)/main $(OBJ_DIR)/*.o
-	rmdir $(OBJ_DIR) 
-	rmdir $(BIN_DIR) 
+	rm -f $(OBJ) $(TARGET)
