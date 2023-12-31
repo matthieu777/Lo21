@@ -131,7 +131,7 @@ BC chargerBaseConnaissances(const char *nom) {
     FILE *fichier = fopen(nom, "r"); //on ouvre le fichier en lecture
 
     if (fichier == NULL) {
-        printf("erreur lors de l'ouverutre de la base");    //si on parvient pas à ouvrir le fichier
+        printf("\n=> Erreur lors de l'ouverutre de la base, \nTester avec une autre base\n");    //si on parvient pas à ouvrir le fichier
         return NULL;
     }
 
@@ -200,4 +200,14 @@ BC supPropositionBaseC(BC baseC, char *text) {
     }
 
     return baseC;
+}
+
+
+void libererBC(BC baseC) {
+    BC temp;
+    while (baseC != NULL) {
+        temp = baseC;
+        baseC = baseC->next;
+        free(temp);
+    }
 }

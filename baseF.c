@@ -10,7 +10,7 @@ BF ajouterFait(BF b, char *text){
     BF nouveau = (BF)malloc(sizeof(baseFaits));
     
     nouveau->texte = (char*)malloc(strlen(text) + 1);
-    strcpy(nouveau->texte, text);
+    strcpy(nouveau->texte, text );
     nouveau->next = NULL;
 
     
@@ -38,3 +38,11 @@ void afficherBaseF(BF b) {
     
 
 
+void libererBaseF(BF baseF) {
+    while (baseF != NULL) {
+        BF temp = baseF;
+        baseF = baseF->next;
+        free(temp->texte);
+        free(temp);
+    }
+}

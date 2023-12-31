@@ -32,7 +32,7 @@ regle ajtPremisse(regle regled, char *text){
 
     actuel->next = (Premisse)malloc(sizeof(Proposition));
     actuel = actuel->next;
-    actuel->texte = (char*)malloc(strlen(text) + 1);
+    actuel->texte = (char*)malloc(strlen(text) + 1);    
     strcpy(actuel->texte, text);
     actuel->next = NULL;
 
@@ -165,3 +165,17 @@ void afficherRegle(regle Regle) {
 
 
 
+void libererRegle(regle Regle) {
+    
+    Premisse actuel = Regle.premisse;
+    while (actuel != NULL) {
+        Premisse temp = actuel;
+        actuel = actuel->next;
+        free(temp->texte);
+        free(temp);
+    }
+
+    if (Regle.conclusion != NULL) {
+        free(Regle.conclusion);
+    }
+}

@@ -23,11 +23,7 @@ void afficherBaseConnaissance(BC base);
 void sauvegarderBaseConnaissances(BC baseC, const char *nom);
 BC chargerBaseConnaissances(const char *nom);
 BC supPropositionBaseC(BC baseC, char *text) ;
-
-
-
-
-
+void libererBC(BC baseC);
 
 
 

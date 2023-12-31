@@ -31,5 +31,6 @@ char* tetePremisse(Premisse p);
 char* conclRegle(regle r);
 
 void afficherRegle(regle Regle);
+void libererRegle(regle Regle) ;
 
 #endif

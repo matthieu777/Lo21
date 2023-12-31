@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "regles.h": "c"
+        "regles.h": "c",
+        "moteurinference.h": "c"
     }
 }

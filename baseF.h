@@ -15,9 +15,9 @@ typedef baseFaits *BF;
 
 
 BF creerBaseF();
-BF ajouterFait(BF b, char *text);
+BF ajouterFait(BF b, char* text);
 void afficherBaseF(BF b);
-
+void libererBaseF(BF baseF);
 
 
 

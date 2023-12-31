@@ -5,6 +5,7 @@
 #include "baseC.h"
 #include "baseF.h"
 
+bool apartPremisseF(Premisse premise, BF baseF);
 void moteurInf(BC baseC, BF baseF);
 
 

@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 
+
 int main(){
 
     int choix;
@@ -63,6 +64,7 @@ int main(){
                                 {
                                 case 1 :
                                     supprimerFichierBase(nomFM);
+                                    libererBC(baseCM);
                                     printf("\nA bientot\n");
                                     break;
 
@@ -109,10 +111,16 @@ int main(){
                                 printf("\n Voici votre regle ajouter: \n\n ");
                                 afficherRegle(RegleM);
                                 baseCM = ajouterRegleC(baseCM,RegleM);
+                                
+                                
+                                
                                 printf("------------------------");
                                 printf("\n \n Voici votre base apres ajout : \n\n ");
                                 afficherBaseConnaissance(baseCM);
                                 sauvegarderBaseConnaissances(baseCM, nomFM);
+                                libererBC(baseCM);
+                                
+                                
                                 printf("\n \n relancer le programme pour l'utiliser \n à bientot\n");
                                     break;
 
@@ -136,6 +144,7 @@ int main(){
                                     printf("\n\nVoici votre base apres modification : \n\n");
                                     printf("------------------------\n");
                                     afficherBaseConnaissance(baseCM);
+                                    libererBC(baseCM);
                                     printf("\n------------------------\n\n");
                                     printf("\n \n relancer le programme pour l'utiliser \n A bientôt\n");
 
@@ -208,14 +217,19 @@ int main(){
                                 printf("\n Voici votre regle ajouter: \n\n ");
                                 afficherRegle(Regle);
                                 baseC = ajouterRegleC(baseC,Regle);
+                                
                                 printf("------------------------");
                                 printf("\n \n voici votre base actuelle : \n\n ");
                                 afficherBaseConnaissance(baseC);
+                                
                             } else if (choix1 != 2) {
                                 printf("saisir 1 ou 2\n");
                             }
                             } while (choix1 != 2);
                             sauvegarderBaseConnaissances(baseC, nomF);
+                            
+                            libererBC(baseC);
+                            
                             printf("\nVotre base à bien été creer, relancer le programme pour pouvoir l'utiliser\n");
                             break;
                         case 3 :
@@ -238,6 +252,9 @@ int main(){
                 char baseCD[50];
                 scanf("%49s", baseCD);
                 BC baseCDD = chargerBaseConnaissances(baseCD);
+                if (baseCDD == NULL){
+                    break;
+                };
                 int choix4;
                 BF baseF= creerBaseF();
                 do{
@@ -266,7 +283,8 @@ int main(){
                 sleep(2);
                 printf("\n\n==> Le moteur d'inférence peut déduire a partire de vos fait et de la base de connaissance les conclusions suivantes :\n");
                 moteurInf(baseCDD,baseF);
-                
+                libererBC(baseCDD);
+                libererBaseF(baseF);
                 
                 break;
 
