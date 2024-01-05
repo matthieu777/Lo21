@@ -13,7 +13,7 @@ int main(){
     int choix;
 
     do {
-        printf("Bienvenue, que voulez-vous faire ? \n 1) Comment ça marche \n 2) Créer/modiffier une base de connaissance \n 3) Utiliser le moteur d'inférence \n 4) Quitter \n ");
+        printf("Bienvenue, que voulez-vous faire ?\n1) Comment ça marche\n2) Créer/modifier une base de connaissance\n3) Utiliser le moteur d'inférence\n4) Quitter\n");
 
         if (scanf("%d", &choix) != 1) {
             // si c'est pas un nombre
@@ -26,14 +26,14 @@ int main(){
         switch (choix) {
             case 1:
                 printf("\n-------------------\n");
-                printf(" Option 2 : \n\n Une base de connaissance est une liste de regles.\n Une regles est constituer d'une premisse avec plusieurs propositions.\n A partir de tout c'est proposition on propose une conclusion a la premisse.\n\n Par exemple voici une regles A et B et C => conclusion5. \n Ainsi une base de connaissance est constituer de plusieurs règles. \n\n\n\n Option 3 : \n\n Le moteur d'inferance fonctionne avec une base de faits et une base de connaissance.\n Le moteur d'inferance va chercher a partir des faits donner dans la base de faits et de la base de connaissance si on peut deduire une ou plusieurs conclusion. \n\n Exemple : \n Ma base de fait contient A B C et ma base de connaissance contient les regles A et D => conc1 mais aussi A et B => conc 2 \n Donc ici le moteur d'inférence peut a partir de la base de faits donner et la base de connaissance, deduire la 'conc2'  \n\n\n\n Option 4 : \n\n Quitter le programme\n");
+                printf(" Option 2 :\n\nUne base de connaissance est une liste de règles.\nUne règle est constituée d'une prémisse avec plusieurs propositions.\nÀ partir de toutes ces propositions, on propose une conclusion à la prémisse.\n\nPar exemple, voici une règle : A et B et C => conclusion5. Ainsi, une base de connaissance est constituée de plusieurs règles.\n\n\nOption 3 :\n\nLe moteur d'inférence fonctionne avec une base de faits et une base de connaissance.\nLe moteur d'inférence va chercher, à partir des faits donnés dans la base de faits et de la base de connaissance, si on peut déduire une ou plusieurs conclusions.\n\nExemple : Ma base de faits contient A, B, C et ma base de connaissance contient les règles A et D => conc1 mais aussi A et B => conc 2. Donc ici, le moteur d'inférence peut, à partir de la base de faits donnée et la base de connaissance, déduire la 'conc2'.\n\n\nOption 4 :\n\nQuitter le programme\n");
                 break;
 
             case 2:
                 printf("\n-------------------\n");
                 int choix = 0;
                 do {
-                    printf("Que voulez vous faire ? \n 1) Modifier une base deja existante ? \n 2) Creer une nouvelle base de connaissance ? \n 3) Quitter\n");
+                    printf("\nQue voulez-vous faire ?\n1) Modifier une base déjà existante ?\n2) Créer une nouvelle base de connaissance ?\n3) Quitter\n");
                     if (scanf("%d", &choix) != 1) {
                     // si c'est pas un nombre
                         printf("\n => Entrée invalide, veuillez saisir un nombre.\n\n");
@@ -42,7 +42,7 @@ int main(){
                     }
                     switch(choix){
                         case 1 :
-                            printf("\n Quelles base voulez vous modifier ? \n");
+                            printf("\n Quelle base voulez-vous modifier ?\n");
                             char nomFM[50];
                             scanf("%49s", nomFM);
                             BC baseCM = chargerBaseConnaissances(nomFM);
@@ -51,7 +51,7 @@ int main(){
                             
 
                             do{
-                                printf("\n Que voulez vous faire ? \n 1) Supprimer la base \n 2) Ajouter une regle ? \n 3) Supprimer une proposition de la tete \n\n");
+                                printf("Que voulez-vous faire ?\n1) Supprimer la base\n2) Ajouter une règle ?\n3) Supprimer une proposition de toutes les règles\n\n");
                                 
                                 if (scanf("%d", &choix3) != 1) {
                                 // si c'est pas un nombre
@@ -70,8 +70,8 @@ int main(){
 
 
                                 case 2 :
-                                    printf("Ajouter une regle");
-                                    printf("\nvoici la base avant ajout :\n\n");
+                                    printf("Ajoutez une regle");
+                                    printf("\nVoici la base avant ajout :\n\n");
                                     printf("----------------------- \n\n");
                                     afficherBaseConnaissance(baseCM);
                                     printf("-----------------------");
@@ -80,18 +80,18 @@ int main(){
                                 int choix2;
                                 regle RegleM = creerRegle();
                                 do {
-                                    printf("\n Taper 1 pour ajouter une premise a la regle et 2 pour donner la conclusion \n");
+                                    printf("\n Tapez 1 pour ajouter une prémisse à la règle et 2 pour donner la conclusion.\n");
                                     if (scanf("%d", &choix2) != 1) {
                                         printf("\nsaisir un nombre\n");
                                         while (getchar() != '\n'); 
                                         continue;
                                     }
                                     if (choix2 == 1) {
-                                        printf("\n \n Donner premisse à la regle :\n\n");
+                                        printf("\n \n Donnez une premisse à la regle :\n\n");
                                         char premise[50];
                                         scanf("%49s", premise);
                                         RegleM = ajtPremisse(RegleM, premise);
-                                        printf("\n %s a bien été ajouter \n\n",premise);
+                                        printf("\n %s a bien été ajouté. \n\n",premise);
                                         
                                     }  else if (choix2 != 2) {
                                         printf("saisir 1 ou 2\n");
@@ -99,16 +99,16 @@ int main(){
                                         
                                 } while (choix2 != 2);
                                 if (estvidePremisse(RegleM.premisse)){
-                                    printf("=> erreur vous n'avez pas donner de premisse a la regle \n relancer le programme");
+                                    printf("=> Erreur : vous n'avez pas donné de prémisse à la règle. \n Relancez le programme");
                                     return 0;
                                 }
-                                printf("\n Donner la conclusion à la regle : \n\n");
+                                printf("\n Donnez la conclusion à la regle : \n\n");
                                 char conclusion[50];
                                 scanf("%49s", conclusion);
                                 RegleM = creerConclusion(RegleM, conclusion);
                                 printf("\n %s a bien été ajouter\n",conclusion);
                                 printf("------------------------");
-                                printf("\n Voici votre regle ajouter: \n\n ");
+                                printf("\n Voici votre regle ajoutée: \n\n ");
                                 afficherRegle(RegleM);
                                 baseCM = ajouterRegleC(baseCM,RegleM);
                                 
@@ -121,7 +121,7 @@ int main(){
                                 libererBC(baseCM);
                                 
                                 
-                                printf("\n \n relancer le programme pour l'utiliser \n à bientot\n");
+                                printf("\n \n relancez le programme pour l'utiliser \n À bientôt\n");
                                     break;
 
                                 case 3 :
@@ -131,7 +131,7 @@ int main(){
                                     printf("------------------------\n\n");
                                     afficherBaseConnaissance(baseCM);
                                     printf("\n\n------------------------\n\n");
-                                    printf("Quelle proposition voulez-vous supprimer (dans toutes les regles) ? \n");
+                                    printf("Quelle proposition voulez-vous supprimer (dans toutes les règles) ? \n");
                                     scanf("%49s", prop);
 
                                     
@@ -140,13 +140,13 @@ int main(){
               
                                     sauvegarderBaseConnaissances(baseCM, nomFM);
 
-                                    printf("\n\nVotre base a bien été modifier \n");
-                                    printf("\n\nVoici votre base apres modification : \n\n");
+                                    printf("\n\nVotre base a bien été modifiée \n");
+                                    printf("\n\nVoici votre base après modification : \n\n");
                                     printf("------------------------\n");
                                     afficherBaseConnaissance(baseCM);
                                     libererBC(baseCM);
                                     printf("\n------------------------\n\n");
-                                    printf("\n \n relancer le programme pour l'utiliser \n A bientôt\n");
+                                    printf("\n \n Relancez le programme pour l'utiliser. \n A bientôt\n");
 
                                     break;
                                 
@@ -162,7 +162,7 @@ int main(){
 
 
                         case 2 :
-                            printf("\nQuelles nom voulez vous donner a la base ? \n \n");
+                            printf("\nQuel nom voulez vous donner à la base ? \n \n");
                             char nomF[50];
                             scanf("%49s", nomF);
                             creerFichierBase(nomF);
@@ -171,7 +171,7 @@ int main(){
                             int choix1;
 
                             do {
-                            printf("\nVeuillez saisir 1 pour ecrire une nouvelle regle ou 2 pour quitter: \n ");
+                            printf("\nVeuillez saisir 1 pour écrire une nouvelle règle ou 2 pour quitter :\n ");
         
         
                             if (scanf("%d", &choix1) != 1) {
@@ -186,18 +186,18 @@ int main(){
                                 int choix2;
                                 regle Regle = creerRegle();
                                 do {
-                                    printf("\n taper 1 pour ajouter une premise et 2 pour donner la conclusion \n");
+                                    printf("\n Tapez 1 pour ajouter une prémisse et 2 pour donner la conclusion. \n");
                                     if (scanf("%d", &choix2) != 1) {
                                         printf("\nsaisir un nombre\n");
                                         while (getchar() != '\n'); 
                                         continue;
                                     }
                                     if (choix2 == 1) {
-                                        printf("\n \n Donner premisse à la regle :\n\n");
+                                        printf("\n \n Donnez une premisse à la regle :\n\n");
                                         char premise[50];
                                         scanf("%49s", premise);
                                         Regle = ajtPremisse(Regle, premise);
-                                        printf("\n %s a bien été ajouter \n\n",premise);
+                                        printf("\n %s a bien été ajoutée \n\n",premise);
                                         
                                     }  else if (choix2 != 2) {
                                         printf("saisir 1 ou 2\n");
@@ -205,16 +205,16 @@ int main(){
                                         
                                 } while (choix2 != 2);
                                 if (estvidePremisse(Regle.premisse)){
-                                    printf("=> erreur vous n'avez pas donner de premisse a la regle \n relancer le programme");
+                                    printf("=> Erreur : vous n'avez pas donné de prémisse à la règle \n relancez le programme");
                                     return 0;
                                 }
-                                printf("\n Donner la conclusion à la regle : \n\n");
+                                printf("\n Donnez la conclusion à la regle : \n\n");
                                 char conclusion[50];
                                 scanf("%49s", conclusion);
                                 Regle = creerConclusion(Regle, conclusion);
-                                printf("\n %s a bien été ajouter",conclusion);
-                                printf("------------------------");
-                                printf("\n Voici votre regle ajouter: \n\n ");
+                                printf("\n %s a bien été ajouté",conclusion);
+                                printf("\n------------------------");
+                                printf("\n Voici votre regle ajoutée: \n\n ");
                                 afficherRegle(Regle);
                                 baseC = ajouterRegleC(baseC,Regle);
                                 
@@ -230,7 +230,7 @@ int main(){
                             
                             libererBC(baseC);
                             
-                            printf("\nVotre base à bien été creer, relancer le programme pour pouvoir l'utiliser\n");
+                            printf("\nVotre base à bien été creer, relancez le programme pour pouvoir l'utiliser\n");
                             break;
                         case 3 :
                             printf("A bientot");
@@ -248,7 +248,7 @@ int main(){
                 break;
 
             case 3:
-                printf("\n\n Veuillez donner le nom de la base de connaissance que vous voullez utiliser (si aucune n'est creer relancer et creer en une): \n\n");
+                printf("\n\n Veuillez donner le nom de la base de connaissances que vous souhaitez utiliser. \nSi aucune n'est créée, veuillez relancer le programme et en créer une.\n\n");
                 char baseCD[50];
                 scanf("%49s", baseCD);
                 BC baseCDD = chargerBaseConnaissances(baseCD);
@@ -258,18 +258,18 @@ int main(){
                 int choix4;
                 BF baseF= creerBaseF();
                 do{
-                    printf("\n\nVeuillez maitenant donner vos faits, taper 1 pour ajouter un faits et 2 quand vous avez finit: \n\n");
+                    printf("\n\nVeuillez maintenant donner vos faits, tapez 1 pour ajouter un fait et 2 quand vous avez fini : \n\n");
                     if (scanf("%d", &choix4) != 1) {
                         printf("\nsaisir un nombre\n");
                         while (getchar() != '\n'); 
                         continue;
                     }
                     if (choix4 == 1) {
-                        printf("\n \n Donner un fait:\n\n");
+                        printf("\n \n Donnez un fait:\n\n");
                         char fait[50];
                         scanf("%49s", fait);
                         baseF = ajouterFait(baseF,fait);
-                        printf("\n %s a bien été ajouter a vos fait\n\n",fait);
+                        printf("\n %s a bien été ajouté à vos faits.\n\n",fait);
                     }else if (choix4 != 2) {
                             printf("saisir 1 ou 2\n");
                     } 
@@ -279,9 +279,9 @@ int main(){
                 printf("----------------\n\n");
                 afficherBaseF(baseF);
                 printf("\n----------------\n\n");
-                printf("Le programme va chercher vos fait : \n");
+                printf("Le programme va chercher vos faits : \n");
                 sleep(2);
-                printf("\n\n==> Le moteur d'inférence peut déduire a partire de vos fait et de la base de connaissance les conclusions suivantes :\n");
+                printf("\n\n==> Le moteur d'inférence peut déduire à partir de vos faits et de la base de connaissances les conclusions suivantes :\n");
                 moteurInf(baseCDD,baseF);
                 libererBC(baseCDD);
                 libererBaseF(baseF);

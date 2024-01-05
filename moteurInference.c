@@ -36,11 +36,11 @@ char* supp(char* str) {
     }
 
 
-    char* result = (char*)malloc((end - start + 2) * sizeof(char)); //on copie la chaine sans les espaces non voulue
-    strncpy(result, &str[start], end - start + 1);
-    result[end - start + 1] = '\0';
+    char* res = (char*)malloc((end - start + 2) * sizeof(char)); //on copie la chaine sans les espaces non voulue
+    strncpy(res, &str[start], end - start + 1);
+    res[end - start + 1] = '\0';
 
-    return result;
+    return res;
 }
 
 
@@ -68,20 +68,19 @@ void moteurInf(BC baseC, BF baseF) {
         
         Premisse premisseActuelle = regleActuelle->Bcregle.premisse; //recuperation de la premisse de la regle
         int premisseTrouver = 1;
-        while (premisseActuelle != NULL) { //pacours de la premisse
+
             if (!apartPremisseF(premisseActuelle, baseF)) {  //si tout les element de la premisse ne sont pas dans la base de faits
                 premisseTrouver = 0; 
-                break;
+                
             }
-            premisseActuelle = premisseActuelle->next;
-        }   
+
         
         if (premisseTrouver) {                //si tout les elements de la premisse sont dans la base de faits on affiche la conclusion de la regle
            char* conc = conclRegle(regleActuelle->Bcregle);
            conc = supp(conc);   //on enleve les espaces non dessirable
 
             baseF = ajouterFait(baseF,conc); //ajoute la conclussion a la base de fait
-            printf("\nconclusion trouver  : %s\n",conc);
+            printf("\nconclusion trouvée  : %s\n",conc);
             
             
 

@@ -105,7 +105,7 @@ regle supProposition(regle regleCourante, char *text) {
     }
  
     } else {
-        printf("la proposition donner n'existe pas dans la premisse");
+        printf("La proposition donnée n'existe pas dans la premisse");
     }
    
 

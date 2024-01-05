@@ -73,58 +73,6 @@ int main(){
 
     moteurInf(base1,baseF);
 
-
-    /*
-    printf(" est dans les prémisses ? %s\n", apartPremisse(maRegle.premisse,"def") ? "Oui" : "Non");
-
-     
-    Regle1 = supProposition(maRegle ,"Premisse 1");
- 
-
-    printf("la tete est : %s \n", tetePremisse(maRegle.premisse));
-    printf("la conclusion est : %s \n", conclRegle(maRegle));
-    
-    
-    regle maRegle = creerRegle();
-    maRegle = ajtPremisse(maRegle, "premise1");
-    maRegle = ajtPremisse(maRegle, "premise2");
-    maRegle = creerConclusion(maRegle, "c1");
-
-    regle maRegle1 = creerRegle();
-    maRegle1 = ajtPremisse(maRegle1, "premise1");
-    maRegle1 = ajtPremisse(maRegle1, "premise3");
-    maRegle1 = creerConclusion(maRegle1, "c3");
-
-
-    BC maBase = creerBaseC();
-    maBase = ajouterRegleC(maBase, maRegle);
-    maBase = ajouterRegleC(maBase, maRegle1);
-    printf("\n-----------------------\n");
-    afficherBaseConnaissance(maBase);
-
-    printf("\n-----------------------\n");
-    printf("here \n \n");
-    BC maBaseConnaissances = chargerBaseConnaissances("fichier.txt");
-    afficherBaseConnaissance(maBaseConnaissances);
-    printf("\n-----------------------\n");
-
-
-    //printf("\n \n test tete :\n ");
-    //regle tete = teteBaseC(maBase);
-    //afficherRegle(tete);
-
-    BF maBaseF= creerBaseF();
-
-
-    maBaseF = ajouterFait(maBaseF, "premissse1");
-    maBaseF = ajouterFait(maBaseF, "premissse2");
-    maBaseF = ajouterFait(maBaseF, "premissse3");
-    printf("\n-----------------------\n");
-    afficherBaseF(maBaseF);
-    printf("\n-----------------------\n");
-    moteurInf(maBaseConnaissances, maBaseF);
-    sauvegarderBaseConnaissances(maBase, "fichier.txt");
-    */
     return 0;
     
 }
